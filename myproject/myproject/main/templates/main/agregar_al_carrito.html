@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir al Carrito</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ producto.marca }} {{ producto.modelo }}</h1>
+        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="img-fluid">
+        <p>{{ producto.descripcion }}</p>
+        <p>${{ producto.precio|floatformat:0 }} CLP</p>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Añadir al Carrito</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!-- templates/main/ver_carrito.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Carrito de Compras</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Precio Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in carrito.carritoitem_set.all %}
+                <tr>
+                    <td>{{ item.producto.marca }} {{ item.producto.modelo }}</td>
+                    <td>{{ item.cantidad }}</td>
+                    <td>${{ item.producto.precio|floatformat:0 }} CLP</td>
+                    <td>${{ item.producto.precio|floatformat:0|mul:item.cantidad }} CLP</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
